@@ -32,7 +32,6 @@ export default {};
   width: 350px;
   align-self: center;
   height: 140px;
-  background-color: yellow;
   display: flex;
   overflow: auto;
 
