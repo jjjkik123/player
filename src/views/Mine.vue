@@ -1,5 +1,7 @@
 <template>
-  <div>
-    Mine
+  <div class="mine">
+    <div class="top">
+      class
+    </div>
   </div>
 </template>
