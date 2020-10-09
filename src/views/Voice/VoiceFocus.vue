@@ -1,7 +1,7 @@
 <template>
     <div class="focus-box">
         <voice-top></voice-top>
-        <div>
+        <div class="box-son">
             <div class="the-label">
                 <p class="the-label-p">
                     只看粉丝
@@ -32,7 +32,13 @@ export default {
 
 <style lang="scss">
 .focus-box{
+     height: 86px;
+     width: 100%;
+    //  margin: 0 10px 0 10px;
      position: relative;
+     .box-son{
+         margin: 0 15px;
+     }
 .the-label{
         width: 66px;
         height: 25px;
@@ -40,16 +46,14 @@ export default {
         .the-label-p{
             width: 66px;
             border-radius: 4px;
-            // height: 100%;
             font-size: 11px;
             font-family: PingFang;
             font-weight: 500;
             color: #000000;
             text-align: center;
             line-height: 25px;
-            // float: right;
              position: absolute;
-            right: 0;
+            right: 15px;
             background: #FFDE00;
         }
     }
