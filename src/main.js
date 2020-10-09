@@ -6,7 +6,7 @@ Vue.config.productionTip = false
 
 import "./assets/style/reset.scss";
 import "amfe-flexible";
-import { Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem,NavBar,List,Icon,Divider } from 'vant';
+import { Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem,NavBar,List,Icon,Divider,Tab, Tabs } from 'vant';
 
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -19,6 +19,8 @@ Vue.use(NavBar);
 Vue.use(List);
 Vue.use(Icon);
 Vue.use(Divider);
+Vue.use(Tab);
+Vue.use(Tabs);
 
 new Vue({
   router,
