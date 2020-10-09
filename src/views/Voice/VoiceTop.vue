@@ -1,6 +1,6 @@
 <template>
     <van-tabs v-model="active" class="voice-top">
-        <van-tab :title="item" v-for="(item,index) in msg" :key="index">
+        <van-tab :title="item.title" v-for="(item,index) in msg" :key="index" :to='item.url'>
         </van-tab>
     </van-tabs>
 </template>
@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       active: 0,
-       msg:['房间','电台','派对','关注']
+       msg:[{title:'房间',url:'/voice/index'},{title:'电台',url:'/voice/Radio'},{title:'派对',url:'/voice/Partyi'},{title:'关注',url:'/voice/Focus'}]
     };
   },
 };
