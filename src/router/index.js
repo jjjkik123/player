@@ -7,6 +7,8 @@ const Voice = () => import('../views/Voice.vue');
 const Message = () => import('../views/Message.vue');
 const Find = () => import('../views/Find.vue');
 const Mine = () => import('../views/Mine.vue');
+const BackYard = () => import('../views/index/Backyard.vue')
+const Zoom = () => import('../views/index/Zoom.vue')
 
 Vue.use(VueRouter)
 
@@ -40,6 +42,14 @@ const routes = [
         component: Mine
       },
     ]
+  },
+  {
+    path: '/backyard',
+    component: BackYard
+  },
+  {
+    path: '/zoom',
+    component: Zoom
   },
 ]
 
