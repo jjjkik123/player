@@ -6,7 +6,10 @@ Vue.config.productionTip = false
 
 import "./assets/style/reset.scss";
 import "amfe-flexible";
-import { Button, Tabbar, TabbarItem, Grid, GridItem, Swipe, SwipeItem,NavBar,List,Icon,Divider } from 'vant';
+import { Button, Tabbar, TabbarItem, Grid, GridItem,Tab, Tabs, Swipe,Toast, SwipeItem,NavBar,List,Icon,Divider,Skeleton } from 'vant';
+
+import "./assets/font/iconfont.js"
+import "./assets/font/iconfont.css"
 
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -19,9 +22,13 @@ Vue.use(NavBar);
 Vue.use(List);
 Vue.use(Icon);
 Vue.use(Divider);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Toast);
+Vue.use(Skeleton);
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
