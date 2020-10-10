@@ -1,37 +1,35 @@
 <template>
   <div id="double">
-    <div>
-      <div class="img"></div>
-      <div class="font">
-        <span>五子棋</span>
-        <span>46096对在玩</span>
+    <div v-for="(item, index) in double" :key="index" :style='item.bgc'>
+      <div class="img" >
+        <img :src="item.img" alt="" srcset="">
       </div>
-    </div>
-    <div>
-      <div class="img"></div>
       <div class="font">
-        <span>斗兽棋</span>
-        <span>46096对在玩</span>
-      </div>
-    </div>
-    <div>
-      <div class="img"></div>
-      <div class="font">
-        <span>台球</span>
-        <span>46096对在玩</span>
-      </div>
-    </div>
-    <div>
-      <div class="img"></div>
-      <div class="font">
-        <span>更多小游戏</span>
-        <span>46096对在玩</span>
+        <span>{{item.title}}</span>
+        <span>{{item.number}}</span>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    double() {
+      return this.$store.state.IndexModule.double
+    }
+  },
+  methods: {
+    getDoubleList() {
+      this.$store.dispatch('IndexModule/getDoubleList')
+    }
+  },
+  created() {
+    this.getDoubleList();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -46,14 +44,19 @@ export default {};
   div {
     width: 170px;
     height: 70px;
-    background-color: yellow;
+    border-radius: 10px;
+    // background-color: yellow;
     display: flex;
     .img {
       width: 45px;
       height: 45px;
       margin-top: 10px;
       margin-left: 11px;
-      background-color: red;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
     }
     .font {
       flex: 1;

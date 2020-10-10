@@ -8,7 +8,9 @@
       @click-right="onClickRight"
     />
     <div class="top">
-      <div class="img"></div>
+      <div class="img">
+        <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3086421700,3397987928&fm=26&gp=0.jpg" alt="">
+      </div>
       <div class="master">
         <div class="name">
           <p>我的主人</p>
@@ -18,49 +20,21 @@
       </div>
     </div>
     <div class="bulk">
-      <div class="item">
+      <div class="item" v-for="(item,index) in backyard" :key="index">
         <div class="top2">
-          <div class="img2"></div>
+          <div class="img2">
+            <img
+              :src="item.img"
+              alt=""
+            />
+          </div>
           <div class="nickname">
             <span>赐昵称</span>
-            <span>旺财</span>
+            <span>{{item.nickname}}</span>
           </div>
         </div>
         <van-divider />
-        <div class="bottom">任务完成</div>
-      </div>
-      <div class="item">
-        <div class="top2">
-          <div class="img2"></div>
-          <div class="nickname">
-            <span>赐昵称</span>
-            <span>旺财</span>
-          </div>
-        </div>
-        <van-divider />
-        <div class="bottom">任务完成</div>
-      </div>
-      <div class="item">
-        <div class="top2">
-          <div class="img2"></div>
-          <div class="nickname">
-            <span>赐昵称</span>
-            <span>旺财</span>
-          </div>
-        </div>
-        <van-divider />
-        <div class="bottom">任务完成</div>
-      </div>
-      <div class="item">
-        <div class="top2">
-          <div class="img2"></div>
-          <div class="nickname">
-            <span>赐昵称</span>
-            <span>旺财</span>
-          </div>
-        </div>
-        <van-divider />
-        <div class="bottom">任务完成</div>
+        <div class="bottom"><span>{{item.done}}</span></div>
       </div>
 
       <div class="item2">
@@ -74,6 +48,16 @@
 <script>
 import { Toast } from "vant";
 export default {
+  data() {
+    return {
+      
+    }
+  },
+  computed: {
+    backyard() {
+      return this.$store.state.IndexModule.backyard
+    }
+  },
   methods: {
     onClickLeft() {
       this.$router.go(-1);
@@ -81,11 +65,23 @@ export default {
     onClickRight() {
       Toast("后院秘籍");
     },
+    getBackYardList() {
+      this.$store.dispatch('IndexModule/getBackYardList');
+    }
+  },
+  created() {
+    this.getBackYardList();
   },
 };
 </script>
 <style lang="scss" >
+
 #backyard {
+  img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
   background: #eaeaea;
   display: flex;
   flex-direction: column;

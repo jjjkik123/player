@@ -9,13 +9,9 @@
 
     <h2 class="title">房间</h2>
     <div class="create_zoom">
-      <div class="create">
-        <p>创建好友房</p>
-        <p>邀请好友一起玩游戏</p>
-      </div>
-      <div class="create">
-        <p>搜索房间</p>
-        <p>上次在1665 42房</p>
+      <div class="create" v-for="(item,index) in zoom" :key="index">
+        <p>{{item.title}}</p>
+        <p>{{item.desc}}</p>
       </div>
     </div>
     <h3>我的包间</h3>
@@ -25,56 +21,19 @@
     </p>
     <h3>推荐房间</h3>
     <div class="recommend">
-      <div class="item">
-        <div class="img"></div>
+      <div class="item" v-for="(item,index) in recommend" :key="index">
+        <div class="img">
+          <img :src="item.img" alt="">
+        </div>
         <div class="name">
-          <div class="top"><span>房号: 1077155</span> <span>31级</span></div>
-          <div class="bottom">狼人游戏(娱)</div>
+          <div class="top">房号: <span>{{item.zoomId}}</span> <span>{{item.level}}级</span></div>
+          <div class="bottom">{{item.game}}</div>
         </div>
         <div class="sex">
+          <van-icon name="like-o" />
+          <span>{{item.good}}</span>
           <van-icon name="user-o" />
-          <span>2</span>
-          <van-icon name="user-o" />
-          <span>1</span>
-        </div>
-      </div>
-       <div class="item">
-        <div class="img"></div>
-        <div class="name">
-          <div class="top"><span>房号: 1077155</span> <span>31级</span></div>
-          <div class="bottom">狼人游戏(娱)</div>
-        </div>
-        <div class="sex">
-          <van-icon name="user-o" />
-          <span>2</span>
-          <van-icon name="user-o" />
-          <span>1</span>
-        </div>
-      </div>
-       <div class="item">
-        <div class="img"></div>
-        <div class="name">
-          <div class="top"><span>房号: 1077155</span> <span>31级</span></div>
-          <div class="bottom">狼人游戏(娱)</div>
-        </div>
-        <div class="sex">
-          <van-icon name="user-o" />
-          <span>2</span>
-          <van-icon name="user-o" />
-          <span>1</span>
-        </div>
-      </div>
-       <div class="item">
-        <div class="img"></div>
-        <div class="name">
-          <div class="top"><span>房号: 1077155</span> <span>31级</span></div>
-          <div class="bottom">狼人游戏(娱)</div>
-        </div>
-        <div class="sex">
-          <van-icon name="user-o" />
-          <span>2</span>
-          <van-icon name="user-o" />
-          <span>1</span>
+          <span>{{item.people}}</span>
         </div>
       </div>
     </div>
@@ -84,7 +43,20 @@
 import { Toast } from "vant";
 export default {
   data() {
-    return {};
+    return {
+      zoom: [{
+        title:'创建好友房',
+        desc:'邀请好友一起玩游戏'
+      },{
+        title:'搜索房间',
+        desc:'上次在1665 42房'
+      }],
+    };
+  },
+  computed: {
+    recommend() {
+      return this.$store.state.IndexModule.recommend
+    }
   },
   methods: {
     onClickLeft() {
@@ -93,6 +65,12 @@ export default {
     onClickRight() {
       Toast("买包间");
     },
+    getRecommendList() {
+      this.$store.dispatch('IndexModule/getRecommendList');
+    }
+  },
+  created() {
+    this.getRecommendList();
   },
 };
 </script>
@@ -119,9 +97,12 @@ export default {
     margin-top: 30px;
     margin-bottom: 40px;
     justify-content: space-between;
+    .create:last-of-type {
+      background-color: rgb(243,95,118);
+    }
     .create {
       width: 172px;
-      background-color: blue;
+      background-color: rgb(124,209,229);
       border-radius: 10px;
       display: flex;
       flex-direction: column;
@@ -183,6 +164,11 @@ export default {
         height: 60px;
         border-radius: 50%;
         background-color: gray;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
       }
       .name {
         width: 140px;
@@ -220,7 +206,7 @@ export default {
         }
       }
       .sex {
-        margin-left: 72px;
+        margin-left: 32px;
         font-size: 12px;
         span {
           margin: 0 6px;
