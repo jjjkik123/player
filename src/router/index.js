@@ -9,6 +9,7 @@ const Find = () => import('../views/Find/Find.vue');
 const Mine = () => import('../views/Mine.vue');
 const BackYard = () => import('../views/index/Backyard.vue')
 const Zoom = () => import('../views/index/Zoom.vue')
+const Msgrecommend =()=>import("../views/message/Msgrecommend.vue")
 // 去除重复点击时的警告
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -24,60 +25,75 @@ const routes = [{
     path: '/',
     component: Home,
     children: [{
-            path: "/",
-            redirect: '/index'
+        path: "/",
+        redirect: '/index'
+    },
+    {
+        path: '/index',
+        component: Index
+    },
+    {
+        path: '/message',
+        component: Message,
+        children: [
+            {
+                path: '/message',
+                redirect: '/chatting'
+            },
+            {
+                path: '/chatting',
+                component: () =>
+                import('../views/message/Chatting.vue')
+            },
+            {
+            path: '/msgrecommend',
+            component: Msgrecommend
+        },
+        ]
+    },
+    {
+        path: '/voice',
+        component: Voice
+    },
+    {
+        path: '/find',
+        component: Find,
+        children: [{
+            path: "/find",
+            redirect: '/friendcircle'
         },
         {
-            path: '/index',
-            component: Index
+            path: '/friendcircle',
+            component: () =>
+                import('../views/Find/FriendCircle.vue')
         },
         {
-            path: '/message',
-            component: Message
+            path: '/recommend',
+            component: () =>
+                import('../views/Find/Recommend.vue')
         },
         {
-            path: '/voice',
-            component: Voice
+            path: '/focus',
+            component: () =>
+                import('../views/Find/Focus.vue')
         },
-        {
-            path: '/find',
-            component: Find,
-            children: [{
-                    path: "/find",
-                    redirect: '/friendcircle'
-                },
-                {
-                    path: '/friendcircle',
-                    component: () =>
-                        import ('../views/Find/FriendCircle.vue')
-                },
-                {
-                    path: '/recommend',
-                    component: () =>
-                        import ('../views/Find/Recommend.vue')
-                },
-                {
-                    path: '/focus',
-                    component: () =>
-                        import ('../views/Find/Focus.vue')
-                },
-            ]
+        ]
 
-        },
-        {
-            path: '/mine',
-            component: Mine
-        },
+    },
+    {
+        path: '/mine',
+        component: Mine
+    },
     ]
-  },
-  {
+},
+{
     path: '/backyard',
     component: BackYard
-  },
-  {
+},
+{
     path: '/zoom',
     component: Zoom
-  },
+},
 ]
 
 
