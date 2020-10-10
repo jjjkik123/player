@@ -1,4 +1,4 @@
-import {getIndexBarList,getDoubleList,getBulkList,getRecommendList,getBackYardList} from '../../utils/api';
+import {getIndexBarList,getDoubleList,getBulkList,getRecommendList,getBackYardList,login} from '../../utils/api';
 const indexModules = {
   namespaced: true,
   state: {
@@ -6,7 +6,8 @@ const indexModules = {
     double:[],
     bulk:[],
     recommend:[],
-    backyard:[]
+    backyard:[],
+    login:{}
   },
   mutations: {
     getIndexBarList(state,payload) {
@@ -23,6 +24,12 @@ const indexModules = {
     },
     getBackYardList(state,payload) {
       state.backyard = payload.backyard
+    },
+    login(state,payload) {
+      state.login = payload.data.userInfo
+      if(payload.data.userInfo) {
+        sessionStorage.setItem('username',JSON.stringify(payload.data.userInfo));
+      }
     },
   },
   actions: {
@@ -46,6 +53,10 @@ const indexModules = {
       const res = await getBackYardList();
       commit('getBackYardList',res)
     },
+    async login({commit},payload) {
+      const res = await login(payload);
+      commit('login',res)
+    }
     
   }
 }

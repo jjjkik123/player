@@ -1,4 +1,6 @@
 <template>
+  <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+ 
   <div id="Index">
     <index-header></index-header>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
@@ -17,8 +19,11 @@
     <index-title :title="title[4]"></index-title>
     <index-gambit></index-gambit>
   </div>
+</van-pull-refresh>
+
 </template>
 <script>
+import { Toast } from 'vant';
 import IndexHeader from "./index/Header";
 import IndexTitle from "./index/Title";
 import IndexFriend from "./index/Friend";
@@ -31,7 +36,16 @@ export default {
     return {
       title: ["好友在玩", "双人小游戏", "多人组局", "语音房间", "精彩话题"],
       swiper: [require('../assets/img/dbbg1.jpg'),require('../assets/img/dbbg2.jpg'),require('../assets/img/dbbg3.jpg'),require('../assets/img/dbbg4.jpg')],
+      isLoading: false,
     };
+  },
+  methods: {
+     async onRefresh() {
+      setTimeout(() => {
+        Toast('刷新成功');
+        this.isLoading = false;
+      }, 1000);
+    },
   },
   components: {
     IndexHeader,

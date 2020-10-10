@@ -1,16 +1,21 @@
 <template>
   <div id="Index-header">
-    <div class="headerinfo">
+    <van-action-sheet
+      v-model="show1"
+      cancel-text="取消"
+      close-on-click-action
+      :actions="actions"
+      @select="onSelect"
+    />
+
+    <div v-if="login.username" class="headerinfo">
       <div class="info-img">
-        <img
-          src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2256978882,779444759&fm=26&gp=0.jpg"
-          alt=""
-        />
+        <img :src="login.img" alt="" @click="show1 = true" />
       </div>
       <div class="info">
         <div class="info-header">
-          <span>七几</span>
-          <span>12级</span>
+          <span>{{ login.nickname }}</span>
+          <span>{{ login.level }}级</span>
         </div>
         <div class="info-footer">
           <p>
@@ -30,6 +35,15 @@
           </p>
         </div>
       </div>
+    </div>
+    <div v-else class="headerinfo" @click="goLogin">
+      <div class="info-img">
+        <img
+          src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1127955351,2579331249&fm=26&gp=0.jpg"
+          alt=""
+        />
+      </div>
+      <p>请先去登录</p>
     </div>
     <van-grid v-if="indexBar" :border="false" :column-num="5">
       <van-grid-item
@@ -52,24 +66,38 @@
         />
       </van-grid>
     </van-popup>
+
     <!-- <router-view></router-view> -->
   </div>
 </template>
 <script>
+import { Toast } from "vant";
+import { Dialog } from 'vant';
 export default {
   data() {
     return {
       show: false,
+      show1: false,
+      actions: [{ name: "查看信息" }, { name: "切换用户" }, { name: "注销" }],
     };
   },
   computed: {
-    indexBar () {
-      return this.$store.state.IndexModule.indexBar
-    }
+    indexBar() {
+      return this.$store.state.IndexModule.indexBar;
+    },
+    login() {
+      return this.$store.state.IndexModule.login;
+    },
+  },
+   components: {
+    [Dialog.Component.name]: Dialog.Component,
   },
   methods: {
     showPopup() {
       this.show = true;
+    },
+    goLogin() {
+      this.$router.push("/login");
     },
     a(Event) {
       if (
@@ -80,9 +108,31 @@ export default {
       }
     },
     getIndexBarList() {
-      this.$store.dispatch('IndexModule/getIndexBarList');
-    }
-
+      this.$store.dispatch("IndexModule/getIndexBarList");
+    },
+    onSelect(item) {
+      // 默认情况下点击选项时不会自动收起
+      // 可以通过 close-on-click-action 属性开启自动收起
+      this.show = false;
+      Toast(item.name);
+      if (item.name == "注销") {
+        sessionStorage.removeItem("username");
+        this.$store.state.IndexModule.login = {};
+      } else if (item.name == "切换用户") {
+        sessionStorage.removeItem("username");
+        this.$store.state.IndexModule.login = {};
+        this.$router.push("/login");
+      } else if (item.name == "查看信息") {
+        Dialog.alert({
+          title: "用户信息",
+          messageAlign:'left',
+          message: 
+          `用户名是：${this.$store.state.IndexModule.login.nickname}\n等级是：${this.$store.state.IndexModule.login.level}`,
+        }).then(() => {
+          // on close
+        });
+      }
+    },
   },
   created() {
     this.getIndexBarList();
@@ -110,6 +160,10 @@ export default {
         width: 100%;
         height: 100%;
       }
+    }
+    p {
+      font-size: 24px;
+      margin-left: 20px;
     }
     .info {
       height: 58px;

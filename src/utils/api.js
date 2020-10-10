@@ -25,6 +25,9 @@ function getRecommendList(params) {
 function getBackYardList(params) {
   return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getBackYardList',params)
 }
+function login(params) {
+  return http.post('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/login',params)
+}
 
 
-export {getIndexBarList,getDoubleList,getBulkList,getRecommendList,getBackYardList}
+export {getIndexBarList,getDoubleList,getBulkList,getRecommendList,getBackYardList,login}
