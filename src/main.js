@@ -6,7 +6,10 @@ Vue.config.productionTip = false
 
 import "./assets/style/reset.scss";
 import "amfe-flexible";
-import { Button, Tabbar, TabbarItem, Grid, GridItem,Tab, Tabs, Swipe,Toast, SwipeItem,NavBar,List,Icon,Divider,Popup,Field,Cell, CellGroup,ActionSheet,PullRefresh,Dialog } from 'vant';
+import { Button, Tabbar, TabbarItem, Grid, GridItem,Tab, Tabs, Swipe,Toast, SwipeItem,NavBar,List,Icon,Divider,Skeleton,Popup,Field,Cell, CellGroup,ActionSheet,PullRefresh,Dialog } from 'vant';
+
+import "./assets/font/iconfont.js"
+import "./assets/font/iconfont.css"
 
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -29,6 +32,7 @@ Vue.use(Cell);
 Vue.use(CellGroup);
 Vue.use(Dialog);
 Vue.use(PullRefresh);
+Vue.use(Skeleton);
 
 new Vue({
     router,

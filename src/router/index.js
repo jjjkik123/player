@@ -13,6 +13,7 @@ const Zoom = () => import('../views/index/Zoom.vue')
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Msgrecommend = () => import("../views/message/Msgrecommend.vue")
+const Vip = () => import('../views/VIPcenter/VipCenter.vue')
 // 去除重复点击时的警告
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -38,12 +39,12 @@ const routes = [{
   {
     path: '/message',
     component: Message,
-    
+
     children: [
       {
         path: '/message',
         redirect: '/chatting',
-        
+
       },
       {
         path: '/chatting',
@@ -54,6 +55,36 @@ const routes = [{
       {
         path: '/msgrecommend',
         component: Msgrecommend
+      },
+
+      {
+        path: '/find',
+        component: Find,
+        children: [{
+          path: "/find",
+          redirect: '/friendcircle'
+        },
+        {
+          path: '/friendcircle',
+          component: () =>
+            import('../views/Find/FriendCircle.vue')
+        },
+        {
+          path: '/recommend',
+          component: () =>
+            import('../views/Find/Recommend.vue')
+        },
+        {
+          path: '/focus',
+          component: () =>
+            import('../views/Find/Focus.vue')
+        },
+        ]
+
+      },
+      {
+        path: '/mine',
+        component: Mine,
       },
     ]
   },
@@ -101,28 +132,33 @@ const routes = [{
   component: Zoom
 },
 {
-  path:'/login',
+  path: '/login',
   component: Login
 },
 {
-  path:'/*',
-  component:NotFound
-}
+  path: '/vipcenter',
+  component: Vip,
+},
+{
+  path: '/*',
+  component: NotFound
+},
+
 ]
 
 
 const router = new VueRouter({
   routes
 })
-router.beforeEach((to,from,next)=> {
-  if(to.meta["needLogin"]) {
-    if(sessionStorage.getItem('username')) {
+router.beforeEach((to, from, next) => {
+  if (to.meta["needLogin"]) {
+    if (sessionStorage.getItem('username')) {
       next();
     } else {
       Toast('您还没有登录，请先登录')
       next('/login')
     }
-  } else{
+  } else {
     next();
   }
 })
