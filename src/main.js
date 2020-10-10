@@ -1,15 +1,38 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-Vue.config.productionTip = false
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+Vue.config.productionTip = false;
 
 import "./assets/style/reset.scss";
 import "amfe-flexible";
-import { Button, Tabbar, TabbarItem, Grid, GridItem,Tab, Tabs, Swipe,Toast, SwipeItem,NavBar,List,Icon,Divider,Skeleton } from 'vant';
 
-import "./assets/font/iconfont.js"
-import "./assets/font/iconfont.css"
+import "./assets/font/iconfont.js";
+import "./assets/font/iconfont.css";
+import {
+  Button,
+  Tabbar,
+  TabbarItem,
+  Grid,
+  GridItem,
+  Tab,
+  Tabs,
+  Swipe,
+  Toast,
+  SwipeItem,
+  NavBar,
+  List,
+  Icon,
+  Divider,
+  Skeleton,
+  Popup,
+  Field,
+  Cell,
+  CellGroup,
+  ActionSheet,
+  PullRefresh,
+  Dialog,
+} from "vant";
 
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -26,9 +49,16 @@ Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(Toast);
 Vue.use(Skeleton);
+Vue.use(Popup);
+Vue.use(Field);
+Vue.use(ActionSheet);
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(Dialog);
+Vue.use(PullRefresh);
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app')
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app");

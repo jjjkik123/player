@@ -1,24 +1,36 @@
 <template>
   <div id="IndexFriend">
-    <div class="left">
-      <div class="img"></div>
-      <div class="game">
-        <span>呆</span>
-        <span>你说我猜></span>
+    <div class="left" v-for="(item,index) in Friend" :key="index">
+      <div class="img">
+        <img :src="item.img" alt="">
       </div>
-    </div>
-    <div class="right">
-      <div class="img"></div>
       <div class="game">
-        <span>快乐派</span>
-        <span>狼人杀></span>
+        <span>{{item.name}}</span>
+        <span>{{item.game}}></span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      Friend:[
+        {
+          name:'呆',
+          game:'你说我猜>',
+          img:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2065050661,3169264164&fm=26&gp=0.jpg'
+        },
+        {
+          name:'快乐派',
+          game:'狼人杀>',
+          img:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3785319738,2331527599&fm=26&gp=0.jpg'
+        }
+      ]
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -40,6 +52,10 @@ export default {};
       background-color: red;
       border-radius: 20px;
       align-self: center;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     .game {
       flex: 1;
@@ -61,7 +77,7 @@ export default {};
       }
     }
   }
-  .right {
+  .left:last-of-type {
     .img {
       margin-left: 30px;
       width: 58px;
