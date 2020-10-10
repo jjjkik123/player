@@ -19,6 +19,12 @@ function getDoubleList(params) {
 function getBulkList(params) {
   return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getBulkList',params)
 }
+function getRecommendList(params) {
+  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getRecommendList',params)
+}
+function getBackYardList(params) {
+  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getBackYardList',params)
+}
 
 
-export {getIndexBarList,getDoubleList,getBulkList}
+export {getIndexBarList,getDoubleList,getBulkList,getRecommendList,getBackYardList}

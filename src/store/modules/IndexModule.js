@@ -1,10 +1,12 @@
-import {getIndexBarList,getDoubleList,getBulkList} from '../../utils/api';
+import {getIndexBarList,getDoubleList,getBulkList,getRecommendList,getBackYardList} from '../../utils/api';
 const indexModules = {
   namespaced: true,
   state: {
     indexBar:[],
     double:[],
-    bulk:[]
+    bulk:[],
+    recommend:[],
+    backyard:[]
   },
   mutations: {
     getIndexBarList(state,payload) {
@@ -15,6 +17,12 @@ const indexModules = {
     },
     getBulkList(state,payload) {
       state.bulk = payload.bulk
+    },
+    getRecommendList(state,payload) {
+      state.recommend = payload.recommend
+    },
+    getBackYardList(state,payload) {
+      state.backyard = payload.backyard
     },
   },
   actions: {
@@ -29,6 +37,14 @@ const indexModules = {
     async getBulkList({commit}) {
       const res = await getBulkList();
       commit('getBulkList',res)
+    },
+    async getRecommendList({commit}) {
+      const res = await getRecommendList();
+      commit('getRecommendList',res)
+    },
+    async getBackYardList({commit}) {
+      const res = await getBackYardList();
+      commit('getBackYardList',res)
     },
     
   }
