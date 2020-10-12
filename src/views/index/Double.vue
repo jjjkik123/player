@@ -1,12 +1,17 @@
 <template>
   <div id="double">
-    <div v-for="(item, index) in double" :key="index" :style='item.bgc'>
-      <div class="img" >
-        <img :src="item.img" alt="" srcset="">
+    <div
+      v-for="(item, index) in double"
+      :key="index"
+      :style="item.bgc"
+      @click="game(index)"
+    >
+      <div class="img">
+        <img :src="item.img" alt="" srcset="" />
       </div>
       <div class="font">
-        <span>{{item.title}}</span>
-        <span>{{item.number}}</span>
+        <span>{{ item.title }}</span>
+        <span>{{ item.number }}</span>
       </div>
     </div>
   </div>
@@ -14,17 +19,28 @@
 <script>
 export default {
   data() {
-    return {}
+    return {};
   },
   computed: {
     double() {
-      return this.$store.state.IndexModule.double
-    }
+      return this.$store.state.IndexModule.double;
+    },
   },
   methods: {
     getDoubleList() {
-      this.$store.dispatch('IndexModule/getDoubleList')
-    }
+      this.$store.dispatch("IndexModule/getDoubleList");
+    },
+    game(index) {
+      if (index == 0) {
+        location.href = "http://h.4399.com/play/168797.htm";
+      } else if (index == 1) {
+        location.href = "http://play.7724.com/olgames/dsq/";
+      } else if(index == 2) {
+        location.href= "http://h.4399.com/play/213564.htm";
+      } else {
+        location.href='https:www.4399.com';
+      }
+    },
   },
   created() {
     this.getDoubleList();
