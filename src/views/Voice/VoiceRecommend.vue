@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 .List-item{
-    width: 100%;
+    width: 350px;
     height: 32px;
     list-style: none;
     display: flex;

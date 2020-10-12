@@ -3,13 +3,13 @@
         <div class="voice-modules">
             <img :src="img" alt="">
             <div class="voice-item">
-                <p>人气TOP1</p>
+                <p >人气TOP1</p>
             </div>
             <span>124人</span>
              <p class="title">娇娇幺幺告别演唱...</p>
               <div class='voice-user'>
-                <span class="voice-ball"></span>
-                <p>SD 百里</p>
+                <p class="voice-ball"></p>
+                <p class='voice-play'>SD 百里</p>
                 <img :src="img2" alt="">
             </div>
         </div>
@@ -21,8 +21,8 @@
             <span>124人</span>
             <p class="title">娇娇幺幺告别演唱...</p>
             <div class='voice-user'>
-                <span class="voice-ball"></span>
-                <p>SD 百里</p>
+                 <p class="voice-ball"></p>
+                <p class='voice-play'>SD 百里</p>
                 <img :src="img2" alt="">
             </div>
         </div>
@@ -59,18 +59,18 @@ export default {
             height: 180px;
         }
         .voice-item{
-            // width: 60px;
-            // height: 22px;
+            width: 60px;
+            height: 22px;
             position: absolute;   
             top: 5px;
             left: 10px;
             background: #FEEE36;
             border-radius: 3px 2px 2px 2px;
             padding: 0 5px 0 5px;
-             p{
+            p{
             // width: 48px;
             // height: 11px;
-            font-size: 11px;
+            font-size: 12px;
             font-family: PingFang;
             font-weight: 500;
             color: #000000;
@@ -107,13 +107,26 @@ export default {
         .voice-ball{
             width: 32px;
             height: 32px;
+            // display: block;
             background: #FFF234;
             border-radius: 50%;
-            // position: absolute;
-            // left: 5px;
-            // top:5px;
+            position: absolute;
+            left: 10px;
+            bottom:6px;
+        }
+        .voice-play{
+            position: absolute;
+            left: 30px;
+            width: 100px;
+            height: 50px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 30px;
         }
         img{
+            position: absolute;
+            right: 30px;
+            bottom: 15px;
             width: 12px;
             height: 12px;
         }
