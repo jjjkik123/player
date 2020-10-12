@@ -14,11 +14,21 @@ const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Msgrecommend = () => import("../views/message/Msgrecommend.vue")
 const Vip = () => import('../views/VIPcenter/VipCenter.vue')
+const VoiceIndex = () =>
+    import ('../views/Voice/VoiceIndex.vue');
+const VoicePartyi = () =>
+    import ('../views/Voice/VoicePartyi.vue');
+const VoiceRadio = () =>
+    import ('../views/Voice/VoiceRadio.vue');
+const VoiceFocus = () =>
+    import ('../views/Voice/VoiceFocus.vue');
 // 去除重复点击时的警告
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
+
+
 
 
 
@@ -61,8 +71,27 @@ const routes = [{
   },
   {
     path: '/voice',
-    component: Voice
-  },
+    component: Voice,
+    children: [{
+            path: "/voice",
+            redirect: '/voice/index'
+        }, {
+            path: '/voice/index',
+            component: VoiceIndex
+        },
+        {
+            path: '/voice/Radio',
+            component: VoiceRadio
+        },
+        {
+            path: '/voice/Partyi',
+            component: VoicePartyi
+        }, {
+            path: '/voice/Focus',
+            component: VoiceFocus
+        }
+    ]
+},
   {
     path: '/find',
     component: Find,
@@ -115,11 +144,22 @@ const routes = [{
   component: NotFound
 },
 
+       
+            
+          
+    {
+        path: '/backyard',
+        component: BackYard
+    },
+    {
+        path: '/zoom',
+        component: Zoom
+    },
 ]
 
 
 const router = new VueRouter({
-  routes
+    routes
 })
 router.beforeEach((to, from, next) => {
   if (to.meta["needLogin"]) {

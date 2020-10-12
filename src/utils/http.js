@@ -6,7 +6,7 @@ var instance = axios.create({
     timeout: 10000,
 });
 // 添加请求拦截器
-instance.interceptors.request.use(function(config) {
+// instance.interceptors.request.use(function(config) {
     // 在发送请求之前做些什么
     // console.log(config.params)
     // config.params.token = localStorage.getItem('token')
@@ -15,11 +15,11 @@ instance.interceptors.request.use(function(config) {
     // } else if (config.method === 'post') {
     //     config.data += '&token=' + localStorage.getItem('token')
     // }
-    return config;
-}, function(error) {
-    // 对请求错误做些什么
-    return Promise.reject(error);
-});
+//     return config;
+// }, function(error) {
+//     // 对请求错误做些什么
+//     return Promise.reject(error);
+// });
 
 // 添加响应拦截器
 instance.interceptors.response.use(function(response) {
