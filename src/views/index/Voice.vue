@@ -1,13 +1,14 @@
 <template>
   <div class="wrap">
     <div id="voice">
-      <div class="live" v-for="(item, index) in voice" :key="index">
+      <div class="live" v-for="(item, index) in voice" :key="index" @click="zhibo">
         <div class="title">
           <span>{{ item.title }}</span>
           <span class="number">{{ item.number }}</span>
         </div>
         <div class="footer">{{ item.desc }}</div>
       </div>
+     
     </div>
   </div>
 </template>
@@ -45,9 +46,12 @@ export default {
       await this.$nextTick();
       let bs = new BScroll(".wrap", { // eslint-disable-line no-unused-vars
         scrollX: true,
-        // click: true,
+        click: true,
       });
     },
+    zhibo() {
+      location.href= "https://live.bilibili.com/3096485?session_id=E769EB04-4746-6B39-7A07-55158D153DEA&visit_id=b2sm526jukw0"
+    }
   },
 };
 </script>
