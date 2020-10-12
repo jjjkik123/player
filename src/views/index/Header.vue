@@ -119,8 +119,8 @@ export default {
         sessionStorage.removeItem("username");
         this.$store.state.IndexModule.login = {};
       } else if (item.name == "切换用户") {
-        sessionStorage.removeItem("username");
-        this.$store.state.IndexModule.login = {};
+        // sessionStorage.removeItem("username");
+        // this.$store.state.IndexModule.login = {};
         this.$router.push("/login");
       } else if (item.name == "查看信息") {
         Dialog.alert({
