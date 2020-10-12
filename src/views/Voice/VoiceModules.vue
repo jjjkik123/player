@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import img from '../../../static/img/555.jpg'
-import img1 from '../../../static/img/666.jpg'
-import img2 from '../../../static/img/888.png'
+import img from '../../assets/img/555.jpg'
+import img1 from '../../assets/img/666.jpg'
+import img2 from '../../assets/img/888.png'
 export default {
     data() {
         return {

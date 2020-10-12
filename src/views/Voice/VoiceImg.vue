@@ -13,9 +13,9 @@
 
 import Vue from 'vue';
 import { Lazyload } from 'vant';
-import img from '../../../static/img/1111.jpg'
-import img2 from '../../../static/img/2222.png'
-import img3 from '../../../static/img/333.png'
+import img from '../../assets/img/1111.jpg';
+import img2 from '../../assets/img/2222.png'
+import img3 from '../../assets/img/333.png'
 
 Vue.use(Lazyload);
 

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import img from '../../../static/img/444.png'
+import img from '../../assets/img/444.png'
 export default {
     data(){
         return {

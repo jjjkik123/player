@@ -12,7 +12,7 @@
 
 <script>
 import VioceTop from './VoiceTop'
-import img from '../../../static/img/1010.jpg'
+import img from '../../assets/img/1010.jpg'
 export default {
     data(){
         return {
