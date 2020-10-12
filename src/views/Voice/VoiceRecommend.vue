@@ -30,17 +30,20 @@ export default {
 <style lang="scss" scoped>
 .List-item{
     width: 100%;
+    // justify-content: center;
+    margin: 0 auto;
     height: 32px;
     list-style: none;
     display: flex;
-     justify-content: space-between;
-     margin: 15px 11px 17px;
+     justify-content: space-around;
+     overflow: auto;
     .recommend{
-        width: 69px;
+    //  flex: 1;
+        width: 40px;
         height: 32px;
         opacity: 0.7;
         border-radius: 16px;
-        float: left;
+        // float: left;
             p{
                 text-align: center;
                 line-height: 32px;  
