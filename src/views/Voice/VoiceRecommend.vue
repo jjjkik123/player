@@ -29,13 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 .List-item{
-<<<<<<< HEAD
     width: 100%;
     // justify-content: center;
     margin: 0 auto;
-=======
-    width: 350px;
->>>>>>> 3a85c4c8b7b148aee38278d15d0ad03c9869c042
     height: 32px;
     list-style: none;
     display: flex;
