@@ -14,7 +14,7 @@
             </div>
           </div>
           <div>
-            <span class="grade">Lv12</span>
+            <span class="grade">Lv{{login.level}}</span>
             <span>还差1124积分升级</span>
           </div>
         </div>

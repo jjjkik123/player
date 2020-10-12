@@ -5,7 +5,7 @@
       <div class="wh"><span class="iconfont icon-wenhao"></span></div>
 
       <div class="people">
-        <div></div>
+        <div><img :src="login.img" alt=""></div>
       </div>
       <div class="open"> <i></i>开通会员即可享受专属特权</div>
     </header>
@@ -13,7 +13,11 @@
 
 <script>
 export default {
-
+  computed: {
+    login() {
+      return this.$store.state.IndexModule.login
+    }
+  },
 }
 </script>
 
@@ -39,8 +43,13 @@ header {
     height: 75px;
     width: 75px;
     border-radius: 100%;
-    background: rgb(94, 91, 89);
+    background: rgb(225, 241, 241);
     position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
     > div {
      left: 5px;
      top: 5px;
