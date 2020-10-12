@@ -54,37 +54,8 @@ const routes = [{
       },
       {
         path: '/msgrecommend',
+        meta: { needLogin: true },
         component: Msgrecommend
-      },
-
-      {
-        path: '/find',
-        component: Find,
-        children: [{
-          path: "/find",
-          redirect: '/friendcircle'
-        },
-        {
-          path: '/friendcircle',
-          component: () =>
-            import('../views/Find/FriendCircle.vue')
-        },
-        {
-          path: '/recommend',
-          component: () =>
-            import('../views/Find/Recommend.vue')
-        },
-        {
-          path: '/focus',
-          component: () =>
-            import('../views/Find/Focus.vue')
-        },
-        ]
-
-      },
-      {
-        path: '/mine',
-        component: Mine,
       },
     ]
   },

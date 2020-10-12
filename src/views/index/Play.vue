@@ -14,36 +14,8 @@
             <span>{{ value.desc }}</span>
           </div>
         </div>
-        <!-- <div class="right">
-          <div class="font">
-            <span>{{value.title}}</span>
-            <span>{{value.title}}</span>
-          </div>
-        </div> -->
       </div>
     </div>
-    <!-- <div class="bulk">
-      <div class="top">
-        <div class="font">
-          <span>画画猜猜</span>
-          <span>灵魂画手诞生记</span>
-        </div>
-      </div>
-      <div class="bottom">
-        <div class="left">
-          <div class="font">
-            <span>口袋撸猫</span>
-            <span>我们一起撸猫猫</span>
-          </div>
-        </div>
-        <div class="right">
-          <div class="font">
-            <span>剧本杀</span>
-            <span>来一场声音的邂逅</span>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 <script>

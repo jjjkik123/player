@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <title>玩high跳跳棋 - 品茗逗逗网</title>
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="css/css.css"/>
+  <script src="js/flexible.js"></script>
+</head>
+<body>
+<div class="banner">
+  <img src="images/banner.jpg" alt="">
+  <a class="prize" ></a>
+</div>
+
+<div id="container" class="container">
+  <div class="map-bg">
+    <div class="map">
+      <div id="map">
+        <div class="row clear-both" v-for="(row,sub) in prizes" :keys="sub">
+          <div class="item" v-for="(item, index) in row" :keys="index">
+            <div :class="item"></div>
+          </div>
+        </div>
+      </div>
+      <div class="route">
+        <transition name="bounce">
+          <template>
+            <div id="route" v-show="userShow" :style="'top:'+userTop+'px;left:'+userLeft+'px;'" :class="'user '+(isActive?'active':'')">
+              <div class="img-box">
+                <img src="images/user.png" alt="">
+              </div>
+            </div>
+          </template>
+        </transition>
+      </div>
+    </div>
+    <a @click="dice" class="dice">
+      <span :class="'dice_'+dicePoints"></span>
+      <template><i>{{diceNum}}</i></template>
+      <transition name="slider-bttp">
+        <template>
+          <em v-show="isForwarding">正在进行中~</em>
+        </template>
+      </transition>
+      跳一跳
+    </a>
+  </div>
+
+  <transition name="fade">
+    <template>
+      <div v-show="popup_prize" class="popup-box">
+        <transition name="bounce">
+          <template>
+            <div v-show="popup_prize" class="frame-content">
+              <h3 class="title">{{popup_title}}</h3>
+              <div class="prize-box"><div :class="popup_class"></div></div>
+              <p class="info">{{popup_info}}</p>
+              <a @click="popup_prize=false;popup_share=true" class="btn">分享继续</a>
+              <a @click="popup_prize=false" class="close"></a>
+            </div>
+          </template>
+        </transition>
+      </div>
+    </template>
+  </transition>
+
+  <transition name="fade">
+    <template>
+      <div @click="popup_share=false" v-show="popup_share" class="popup-box">
+        <img class="share-img" src="images/share.png" alt=""/>
+      </div>
+    </template>
+  </transition>
+</div>
+<audio id="audio" src="images/1.mp3" preload></audio>
+<script src="http://www.jq22.com/jquery/vue.min.js"></script>
+<script src="js/js.js"></script>
+</body>
+</html>
