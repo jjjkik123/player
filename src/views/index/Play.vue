@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {
@@ -76,7 +77,7 @@ export default {
       height: 90px;
       width: 350px;
       padding: 18px 16px;
-      // background-image: url('../../assets/img/dbbg1.jpg');
+      background-image: url('../../assets/img/dbbg1.jpg');
       background-size: 100%;
     }
     .bottom {

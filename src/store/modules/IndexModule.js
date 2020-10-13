@@ -11,24 +11,24 @@ const indexModules = {
   },
   mutations: {
     getIndexBarList(state,payload) {
-      state.indexBar = payload.indexBar;
+      state.indexBar = payload[0].indexBar;
     },
     getDoubleList(state,payload) {
-      state.double = payload.double
+      state.double = payload[1].double
     },
     getBulkList(state,payload) {
-      state.bulk = payload.bulk
+      state.bulk = payload[2].bulk
     },
     getRecommendList(state,payload) {
-      state.recommend = payload.recommend
+      state.recommend = payload[3].recommend
     },
     getBackYardList(state,payload) {
-      state.backyard = payload.backyard
+      state.backyard = payload[4].backyard
     },
     login(state,payload) {
-      state.login = payload.data.userInfo
-      if(payload.data.userInfo) {
-        sessionStorage.setItem('username',JSON.stringify(payload.data.userInfo));
+      state.login = payload.userInfo
+      if(payload.state == 1) {
+        sessionStorage.setItem('username',JSON.stringify(payload.userInfo));
       }
     },
   },
@@ -36,6 +36,7 @@ const indexModules = {
     async getIndexBarList({commit}) {
       const res = await getIndexBarList();
       commit('getIndexBarList',res)
+      console.log(res)
     },
     async getDoubleList({commit}) {
       const res = await getDoubleList();
@@ -55,6 +56,7 @@ const indexModules = {
     },
     async login({commit},payload) {
       const res = await login(payload);
+      console.log(res)      
       commit('login',res)
     }
     

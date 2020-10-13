@@ -2,10 +2,6 @@
   <div class="friendCircleWrap">
       <top-wall></top-wall>
       <friend-dynamic></friend-dynamic>
-      
-   
-
-
   </div>
 </template>
  <script>

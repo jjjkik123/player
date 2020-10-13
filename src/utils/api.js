@@ -1,32 +1,44 @@
 import http from './http'
+const baseUrl = 'http://47.111.170.43:3000'
 
 export function getDyanamicList(params) {
-    return http.get('https://www.fastmock.site/mock/7c21f4a99f194ea80f263e8cb34aaf68/find/friends', params)
+    return http.get(baseUrl+'/getFind', params)
+}
+export function getPageList(params) {
+    return http.get(baseUrl+'/getPageList', params)
 }
 
 export function getFoucsList(params) {
-    return http.get('https://www.fastmock.site/mock/7c21f4a99f194ea80f263e8cb34aaf68/find/attention', params)
+    return http.get(baseUrl+'/getFind', params)
 }
 
-// 首页
-function getIndexBarList(params) {
-  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getIndexBarList',params)
+export function comment(params) {
+  return http.get(baseUrl+'/comment',params)
 }
+export function getComment(params) {
+  return http.get(baseUrl+'/getComment',params)
+}
+
+
+
 
 function getDoubleList(params) {
-  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getDoubleList',params)
+  return http.get(baseUrl+'/getIndex',params)
 }
 function getBulkList(params) {
-  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getBulkList',params)
+  return http.get(baseUrl+'/getIndex',params)
 }
 function getRecommendList(params) {
-  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getRecommendList',params)
+  return http.get(baseUrl+'/getIndex',params)
 }
 function getBackYardList(params) {
-  return http.get('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/getBackYardList',params)
+  return http.get(baseUrl+'/getIndex',params)
 }
 function login(params) {
-  return http.post('https://www.fastmock.site/mock/b62f63067ddde24e364a67b508f68eb3/player/api/login',params)
+  return http.post(baseUrl+'/getLogin',params)
+}
+function getIndexBarList(params) {
+  return http.get(baseUrl+'/getIndex',params)
 }
 
 
